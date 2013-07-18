@@ -114,7 +114,7 @@ C
 C---- don't try to read integers, since might get integer overflow
       DO I=1, NINPUT
         IF(ABS(RINPUT(I)) .GT. 2.1E9) THEN
-         IINPUT(I) = 2**31
+         IINPUT(I) = 2**30
         ELSE
          IINPUT(I) = INT(RINPUT(I))
         ENDIF

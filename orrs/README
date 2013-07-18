@@ -25,6 +25,9 @@ Start in the directory containing this README file.
   This statement will tell SUBROUTINE OSMAP where to 
   find this table data file.
 
+NOTE: I've replaced this logic with a preprocessor dec.  Use -DOSFILE_DIR=install_location (no trailing /) instead.  - russt@mit.edu
+
+
 2) Find the following line in osmap.f (roughly line 75):
 
       REAL*4 RLSP, WLSP, HLSP,
