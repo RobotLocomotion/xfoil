@@ -1,5 +1,6 @@
 
 find_package( X11 REQUIRED )
+include_directories ( ${X11_INCLUDE_DIR} )
 
 add_library(xwin Xwin.c) # note: could use object library here for cmake>=2.8.8
 
