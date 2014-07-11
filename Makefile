@@ -40,15 +40,10 @@ configure:
 	@cd pod-build && cmake -DCMAKE_INSTALL_PREFIX=$(BUILD_PREFIX) \
 		   -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) ..
 
-
-.PHONY: install_prereqs_macports install_prereqs_homebrew install_prereqs_ubuntu
-install_prereqs_homebrew :
-	brew install gfortran
-
 clean:
 	-if [ -e pod-build/install_manifest.txt ]; then rm -f `cat pod-build/install_manifest.txt`; fi
 	-if [ -d pod-build ]; then $(MAKE) -C pod-build clean; rm -rf pod-build; fi
 
-# other (custom) targets are passed through to the cmake-generated Makefile 
+# other (custom) targets are passed through to the cmake-generated Makefile
 %::
 	$(MAKE) -C pod-build $@
