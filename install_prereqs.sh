@@ -2,7 +2,7 @@
 
 case $1 in
   ("homebrew")
-    brew install gfortran ;;
+    brew install gcc ;; # homebrew packages gfortran in gcc now
   ("macports")
     ;;
   ("ubuntu")
