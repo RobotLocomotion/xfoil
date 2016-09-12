@@ -192,6 +192,10 @@ c
       write(*,*) 'Click on colors...'
 C
  200  call GETCURSORXY(xx,yy,chkey)
+
+c      ikey = ichar(chkey)
+c      write(*,*) ikey
+
       zz = sat
 c
       r = xx*xr + yy*yr + zz*zr

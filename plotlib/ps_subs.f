@@ -311,10 +311,10 @@ C
 C
 C...If a page has already been plotted, finish it
       if(I_PAGES.GT.0) THEN
-        write(NPS_UNIT,20) BB_XMIN,BB_YMIN,
-     &                     BB_XMAX,BB_YMAX
+        write(NPS_UNIT,20) IFIX(BB_XMIN),IFIX(BB_YMIN),
+     &                     IFIX(BB_XMAX),IFIX(BB_YMAX)
       endif
-  20  format('stroke showpage grestore'/'%%BoundingBox: ',4F8.1/)
+  20  format('stroke showpage grestore'/'%%BoundingBox: ',4I8/)
 C
       LPS_UNSTROKED = .FALSE.
       N_VECS = 0

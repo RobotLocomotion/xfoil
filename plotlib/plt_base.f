@@ -432,6 +432,11 @@ C
       dimension x(n), y(n)
       dimension XABS(MaxPolyLine), YABS(MaxPolyLine)
 C
+      if(n.GT.MaxPolyline) then
+        write(*,*) '*** Error - too many polyline points'
+        stop
+      endif
+C
       if(n.LE.1) return
 C...Convert coordinates to absolute coordinates
       do i=1, n

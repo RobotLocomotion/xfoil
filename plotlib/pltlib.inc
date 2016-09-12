@@ -27,7 +27,7 @@ C --- Global data for Xplot11
 C     Version 4.46 11/28/01
 C*******************************
 C
-      parameter (Nstore_max=100000,Ncolors_max=256,MaxPolyLine=501)
+      parameter (Nstore_max=100000,Ncolors_max=256,MaxPolyLine=1001)
 C
       Real    DEFAULT_PAGEHEIGHT,
      &        DEFAULT_PAGEWIDTH,

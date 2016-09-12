@@ -100,7 +100,7 @@ C---- set OSFILE to match the absolute OS database filename
       CHARACTER*128 OSFILE
       INTEGER LOSF
 
-      DATA OSFILE / '/var/local/codes/orrs/osmap.dat' /
+      DATA OSFILE / 'OSFILE_DIR/osmap.dat' /
 c      DATA OSFILE
 c     &/'/afs/athena.mit.edu/course/16/16_d0006/Codes/orrs/osmap_lx.dat'/
 C
