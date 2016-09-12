@@ -1,6 +1,6 @@
 #############################################################################
 #
-#  Orr-Sommerfeld Computation and Database Package
+#  XFOIL
 #
 #  Copyright (C) 2000 Mark Drela
 #
@@ -20,6 +20,10 @@
 #
 #############################################################################
 
-set(ORRS_DIR "${CMAKE_CURRENT_SOURCE_DIR}" PARENT_SCOPE)
+set(GETOSFILE_SRCS getosfile.c)
+add_library(getosfile OBJECT ${GETOSFILE_SRCS})
+target_compile_definitions(getosfile PRIVATE UNDERSCORE)
 
-add_subdirectory(src)
+set(OSMAP_SRCS osmap.f)
+add_library(osmap OBJECT ${OSMAP_SRCS})
+target_compile_definitions(osmap PRIVATE "OSFILE_DIR=${ORRS_DIR}")
