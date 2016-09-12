@@ -1,6 +1,6 @@
 #############################################################################
 #
-#  Orr-Sommerfeld Computation and Database Package
+#  XFOIL
 #
 #  Copyright (C) 2000 Mark Drela
 #
@@ -20,6 +20,9 @@
 #
 #############################################################################
 
-set(ORRS_DIR "${CMAKE_CURRENT_SOURCE_DIR}" PARENT_SCOPE)
-
-add_subdirectory(src)
+set(CTEST_PROJECT_NAME xfoil)
+set(CTEST_NIGHTLY_START_TIME "00:00:00 EST")
+set(CTEST_DROP_METHOD https)
+set(CTEST_DROP_SITE drake-cdash.csail.mit.edu)
+set(CTEST_DROP_LOCATION /submit.php?project=${CTEST_PROJECT_NAME})
+set(CTEST_DROP_SITE_CDASH ON)

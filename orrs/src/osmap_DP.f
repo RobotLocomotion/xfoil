@@ -94,7 +94,7 @@ C
 C
 C---- set OSFILE to match the absolute location of the OS database file
       CHARACTER*48 OSFILE
-      DATA OSFILE / '/var/local/codes/orrs/osmap_DP.dat' /
+      DATA OSFILE / 'OSFILE_DIR/osmap_DP.dat' /
 C
       DATA LOADED / .FALSE. /
 C

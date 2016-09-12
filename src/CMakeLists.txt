@@ -1,25 +1,58 @@
+#############################################################################
+#
+#  XFOIL
+#
+#  Copyright (C) 2000 Mark Drela
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+#############################################################################
 
-add_definitions(-DUNDERSCORE)
-add_library(xutil userio.f)
-add_library(getosfile ../osrc/getosfile.c)
+set(XFOIL_SRCS xfoil.f xpanel.f xoper.f xtcam.f xgdes.f xqdes.f xmdes.f
+  CIRCLE.INC xsolve.f xbl.f XBL.INC xblsys.f xpol.f xplots.f pntops.f
+  XDES.INC xgeom.f xutils.f modify.f blplot.f polplt.f aread.f naca.f
+  spline.f plutil.f iopol.f PINDEX.INC gui.f sort.f dplot.f XFOIL.INC
+  profil.f userio.f)
 
-add_executable(xfoil 
-		      xfoil.f xpanel.f xoper.f xtcam.f xgdes.f xqdes.f xmdes.f 
-		      xsolve.f xbl.f xblsys.f xpol.f xplots.f pntops.f xgeom.f xutils.f modify.f 
-		      blplot.f polplt.f aread.f naca.f spline.f plutil.f iopol.f gui.f sort.f 
-		      dplot.f profil.f
-		      frplot.f ntcalc.f
-		      )
-target_link_libraries(xfoil xutil plotlib osmap getosfile)
+option(INDIVIDUAL_TS_WAVE_FREQUENCY_PLOTTING
+  "Individual TS-wave frequency plotting" OFF)
 
+if(INDIVIDUAL_TS_WAVE_FREQUENCY_PLOTTING)
+  set(XFOIL_SRCS ${XFOIL_SRCS} frplot.f ntcalc.f $<TARGET_OBJECTS:getosfile>
+     $<TARGET_OBJECTS:osmap>)
+else()
+  set(XFOIL_SRCS ${XFOIL_SRCS} frplot0.f)
+endif()
 
-# todo: need to finish these - russt@mit.edu
+add_executable(xfoil ${XFOIL_SRCS})
+set_target_properties(xfoil PROPERTIES VERSION ${PROJECT_VERSION})
+target_link_libraries(xfoil plt)
+install(TARGETS xfoil DESTINATION bin)
 
-#add_executable(pplot pplot.f polplt.f sort.f iopol.f)
-#target_link_libraries(pplot xutil plotlib)
+set(XFOIL_COPYING gpl.txt)
+install(FILES ${XFOIL_COPYING} DESTINATION share/doc/${PROJECT_NAME}
+  RENAME COPYING)
 
-#add_executable(pxplot pxplot.f plutil.f gui.f)
-#target_link_libraries(pxplot xutil plotlib)
+set(PXPLOT_SRCS pxplot.f PXPLOT.INC plutil.f gui.f userio.f)
+add_executable(pxplot ${PXPLOT_SRCS})
+set_target_properties(pxplot PROPERTIES VERSION ${PROJECT_VERSION})
+target_link_libraries(pxplot plt)
+install(TARGETS pxplot DESTINATION bin)
 
-pods_install_executables(xfoil) 
-
+set(PPLOT_SRCS pplot.f PPLOT.INC polplt.f sort.f iopol.f PINDEX.INC userio.f)
+add_executable(pplot ${PPLOT_SRCS})
+set_target_properties(pplot PROPERTIES VERSION ${PROJECT_VERSION})
+target_link_libraries(pplot plt)
+install(TARGETS pplot DESTINATION bin)

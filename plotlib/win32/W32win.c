@@ -109,6 +109,66 @@ C     Version 4.43  3/5/99
 #include "rgbtbl.h"
 #include "Xdefs.h"
 
+#ifdef UNDERSCORE
+
+#define MSKBITS          mskbits_
+#define GWXREVFLAG       gwxrevflag_ 
+#define GWXOPEN          gwxopen_ 
+#define GWXWINOPEN       gwxwinopen_
+#define GWXCLEAR         gwxclear_
+#define GWXSTATUS        gwxstatus_
+#define GWXRESIZE        gwxresize_
+#define GWXRESET         gwxreset_
+#define GWXCLOSE         gwxclose_
+#define GWXFLUSH         gwxflush_
+#define GWXLINE          gwxline_
+#define GWXDASH          gwxdash_
+#define GWXCURS          gwxcurs_
+#define GWXPEN           gwxpen_
+#define GWXDESTROY       gwxdestroy_
+#define GWXLINEZ         gwxlinez_
+#define GWXPOLY          gwxpoly_
+#define GWXSTRING        gwxstring_
+#define GWXSETCOLOR      gwxsetcolor_
+#define GWXSETBGCOLOR    gwxsetbgcolor_
+#define GWXCOLORNAME2RGB gwxcolorname2rgb_
+#define GWXALLOCRGBCOLOR gwxallocrgbcolor_
+#define GWXFREECOLOR     gwxfreecolor_
+#define GWXDISPLAYBUFFER gwxdisplaybuffer_
+#define GWXDRAWTOBUFFER  gwxdrawtobuffer_
+#define GWXDRAWTOWINDOW  gwxdrawtowindow_
+
+#else
+
+#define MSKBITS          mskbits
+#define GWXREVFLAG       gwxrevflag 
+#define GWXOPEN          gwxopen 
+#define GWXWINOPEN       gwxwinopen
+#define GWXCLEAR         gwxclear
+#define GWXSTATUS        gwxstatus
+#define GWXRESIZE        gwxresize
+#define GWXRESET         gwxreset
+#define GWXCLOSE         gwxclose
+#define GWXFLUSH         gwxflush
+#define GWXLINE          gwxline
+#define GWXDASH          gwxdash
+#define GWXCURS          gwxcurs
+#define GWXPEN           gwxpen
+#define GWXDESTROY       gwxdestroy
+#define GWXLINEZ         gwxlinez
+#define GWXPOLY          gwxpoly
+#define GWXSTRING        gwxstring
+#define GWXSETCOLOR      gwxsetcolor
+#define GWXSETBGCOLOR    gwxsetbgcolor
+#define GWXCOLORNAME2RGB gwxcolorname2rgb
+#define GWXALLOCRGBCOLOR gwxallocrgbcolor
+#define GWXFREECOLOR     gwxfreecolor
+#define GWXDISPLAYBUFFER gwxdisplaybuffer
+#define GWXDRAWTOBUFFER  gwxdrawtobuffer
+#define GWXDRAWTOWINDOW  gwxdrawtowindow
+
+#endif
+
 typedef struct {
     HWND   window;
     HPEN   pen;
