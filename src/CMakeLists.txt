@@ -39,7 +39,11 @@ endif()
 add_executable(xfoil ${XFOIL_SRCS})
 set_target_properties(xfoil PROPERTIES VERSION ${PROJECT_VERSION})
 target_link_libraries(xfoil plt)
-install(TARGETS xfoil DESTINATION bin)
+
+export(TARGETS xfoil FILE "${CMAKE_BINARY_DIR}/xfoil-targets.cmake")
+
+install(TARGETS xfoil EXPORT xfoil-targets DESTINATION bin)
+install(EXPORT xfoil-targets DESTINATION share/${PROJECT_NAME})
 
 set(XFOIL_COPYING gpl.txt)
 install(FILES ${XFOIL_COPYING} DESTINATION share/doc/${PROJECT_NAME}

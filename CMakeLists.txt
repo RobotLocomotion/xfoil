@@ -64,4 +64,18 @@ add_subdirectory(src)
 set(XFOIL_DOCS version_notes.txt xfoil_doc.txt)
 install(FILES ${XFOIL_DOCS} DESTINATION share/doc/${PROJECT_NAME})
 
+include(CMakePackageConfigHelpers)
+
+configure_package_config_file(xfoil-config.cmake.in xfoil-config.cmake
+  INSTALL_DESTINATION share/${PROJECT_NAME} NO_SET_AND_CHECK_MACRO
+  NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+
+write_basic_package_version_file(xfoil-config-version.cmake
+  COMPATIBILITY SameMajorVersion)
+
+install(FILES
+  "${CMAKE_CURRENT_BINARY_DIR}/xfoil-config.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/xfoil-config-version.cmake"
+  DESTINATION share/${PROJECT_NAME})
+
 include(CPack)
