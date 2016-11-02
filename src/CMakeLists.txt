@@ -42,21 +42,22 @@ target_link_libraries(xfoil plt)
 
 export(TARGETS xfoil FILE "${CMAKE_BINARY_DIR}/xfoil-targets.cmake")
 
-install(TARGETS xfoil EXPORT xfoil-targets DESTINATION bin)
-install(EXPORT xfoil-targets DESTINATION share/${PROJECT_NAME})
+install(TARGETS xfoil EXPORT xfoil-targets DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(EXPORT xfoil-targets
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME})
 
 set(XFOIL_COPYING gpl.txt)
-install(FILES ${XFOIL_COPYING} DESTINATION share/doc/${PROJECT_NAME}
+install(FILES ${XFOIL_COPYING} DESTINATION ${CMAKE_INSTALL_DOCDIR}
   RENAME COPYING)
 
 set(PXPLOT_SRCS pxplot.f PXPLOT.INC plutil.f gui.f userio.f)
 add_executable(pxplot ${PXPLOT_SRCS})
 set_target_properties(pxplot PROPERTIES VERSION ${PROJECT_VERSION})
 target_link_libraries(pxplot plt)
-install(TARGETS pxplot DESTINATION bin)
+install(TARGETS pxplot DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 set(PPLOT_SRCS pplot.f PPLOT.INC polplt.f sort.f iopol.f PINDEX.INC userio.f)
 add_executable(pplot ${PPLOT_SRCS})
 set_target_properties(pplot PROPERTIES VERSION ${PROJECT_VERSION})
 target_link_libraries(pplot plt)
-install(TARGETS pplot DESTINATION bin)
+install(TARGETS pplot DESTINATION ${CMAKE_INSTALL_BINDIR})
