@@ -58,6 +58,8 @@ endif()
 
 include(GNUInstallDirs)
 
+set(ORRS_DIR "${CMAKE_SOURCE_DIR}/orrs")
+
 add_subdirectory(orrs)
 add_subdirectory(osrc)
 add_subdirectory(plotlib)
