@@ -58,7 +58,7 @@ set(PLT_VERSION_MAJOR 4)
 set(PLT_VERSION_MINOR 47)
 set(PLT_VERSION ${PLT_VERSION_MAJOR}.${PLT_VERSION_MINOR})
 
-set_target_properties(plt PROPERTIES VERSON ${PLT_VERSION})
+set_target_properties(plt PROPERTIES VERSION ${PLT_VERSION})
 
 if(NOT WIN32)
   target_link_libraries(plt PUBLIC ${X11_LIBRARIES})
