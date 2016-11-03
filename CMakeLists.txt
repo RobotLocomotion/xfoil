@@ -56,13 +56,17 @@ if(DOUBLE_PRECISION)
   endif()
 endif()
 
+include(GNUInstallDirs)
+
+set(ORRS_DIR "${CMAKE_SOURCE_DIR}/orrs")
+
 add_subdirectory(orrs)
 add_subdirectory(osrc)
 add_subdirectory(plotlib)
 add_subdirectory(src)
 
 set(XFOIL_DOCS version_notes.txt xfoil_doc.txt)
-install(FILES ${XFOIL_DOCS} DESTINATION share/doc/${PROJECT_NAME})
+install(FILES ${XFOIL_DOCS} DESTINATION ${CMAKE_INSTALL_DOCDIR})
 
 include(CMakePackageConfigHelpers)
 
@@ -76,6 +80,6 @@ write_basic_package_version_file(xfoil-config-version.cmake
 install(FILES
   "${CMAKE_CURRENT_BINARY_DIR}/xfoil-config.cmake"
   "${CMAKE_CURRENT_BINARY_DIR}/xfoil-config-version.cmake"
-  DESTINATION share/${PROJECT_NAME})
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME})
 
 include(CPack)
