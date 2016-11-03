@@ -71,8 +71,8 @@ install(FILES ${XFOIL_DOCS} DESTINATION ${CMAKE_INSTALL_DOCDIR})
 include(CMakePackageConfigHelpers)
 
 configure_package_config_file(xfoil-config.cmake.in xfoil-config.cmake
-  INSTALL_DESTINATION share/${PROJECT_NAME} NO_SET_AND_CHECK_MACRO
-  NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+  INSTALL_DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}
+  NO_SET_AND_CHECK_MACRO NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
 write_basic_package_version_file(xfoil-config-version.cmake
   COMPATIBILITY SameMajorVersion)
