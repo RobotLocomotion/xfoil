@@ -50,9 +50,7 @@ else()
   set(PLT_SRCS ${PLT_SRCS} $<TARGET_OBJECTS:Xwin>)
 endif()
 
-option(BUILD_SHARED_LIBS "Build all libraries as shared" OFF)
-
-add_library(plt ${PLT_SRCS})
+add_library(plt STATIC ${PLT_SRCS})
 
 set(PLT_VERSION_MAJOR 4)
 set(PLT_VERSION_MINOR 47)
@@ -62,20 +60,6 @@ set_target_properties(plt PROPERTIES VERSION ${PLT_VERSION})
 
 if(NOT WIN32)
   target_link_libraries(plt PUBLIC ${X11_LIBRARIES})
-endif()
-
-if(BUILD_SHARED_LIBS)
-  install(TARGETS plt ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-
-  set(PLT_COPYING GPL-Library)
-  install(FILES ${PLT_COPYING} DESTINATION ${CMAKE_INSTALL_DOCDIR}
-    RENAME COPYING.LIB)
-
-  set(PLT_DOCS Notes)
-  install(FILES ${PLT_DOCS} DESTINATION ${CMAKE_INSTALL_DOCDIR}
-    RENAME plt_doc.txt)
 endif()
 
 add_subdirectory(examples)
